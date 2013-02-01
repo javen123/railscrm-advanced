@@ -43,7 +43,7 @@ describe 'Contact requests' do
     
     it 'deletes contact' do
       click_link 'Contacts'
-      click_link 'Delete'
+      click_link 'delete'
       page.should have_content 'Contact Deleted'
       Contact.all.count.should == 0
     end
@@ -51,7 +51,7 @@ describe 'Contact requests' do
     it 'edits contact' do 
       click_link 'Contacts'
       within '.table-striped' do
-        click_link 'Edit'
+        click_link 'edit'
       end
       fill_in "contact_first_name", with: 'John'
       click_button 'Update Contact'

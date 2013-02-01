@@ -40,14 +40,14 @@ describe 'Accounts' do
 
     it 'deletes account' do
       click_link 'Accounts'
-      click_link 'Delete'
+      click_link 'delete'
       page.should have_content 'Account Deleted'
     end
 
     it 'edits account' do
       click_link 'Accounts'
       within '.table-striped' do
-        click_link 'Edit'
+        click_link 'edit'
       end
       fill_in 'account_name', with: 'Potato Factory'
       click_button 'Update Account'

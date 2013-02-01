@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'User Registration' do
 
   it 'registers user' do
+    pending 'remove test due to removal of registration process'
     visit root_path
     click_link 'Register'
     fill_in 'First name',            with: 'Test'

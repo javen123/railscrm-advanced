@@ -36,7 +36,7 @@ describe "Opportunities" do
     it 'edits opportunity' do
       click_link 'Opportunities'
       within '.table-striped' do
-        click_link 'Edit'
+        click_link 'edit'
       end
 
       fill_in 'opportunity_opportunity_name',   with: 'New Deal Name'
@@ -47,7 +47,7 @@ describe "Opportunities" do
 
     it 'deletes an opportunity' do
       click_link 'Opportunities'
-      click_link 'Delete'
+      click_link 'delete'
       page.should have_content 'Opportunity Deleted'
     end
   end

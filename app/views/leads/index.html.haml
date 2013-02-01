@@ -34,6 +34,6 @@
           %td
             = lead.created_at.to_date
           %td
-            = link_to 'Edit', lead_path(lead), class: 'btn btn-mini btn-primary'
+            = link_to '', lead_path(lead), class: 'icon-edit', id: 'edit'
               
-            = link_to 'Delete', lead_path(lead), method: 'delete', class: 'btn btn-mini btn-danger', data: {confirm: 'Are you sure that you want to delete this lead?'}
+            = link_to '', lead_path(lead), method: 'delete', class: 'icon-trash', data: {confirm: 'Are you sure that you want to delete this lead?'}, id: 'delete'

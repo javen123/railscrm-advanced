@@ -101,7 +101,7 @@ describe "Leads" do
     it 'deletes a lead' do
       visit leads_path
       page.should have_content 'Bill Gates'
-      click_link 'Delete'
+      click_link 'delete'
       page.should have_content 'Lead Deleted'
       page.should_not have_content 'Bill Gates'
     end
