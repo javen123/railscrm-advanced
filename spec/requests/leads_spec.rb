@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "Leads" do
-
+describe "Leads", vcr: true do
+  
   before do
     @user   = FactoryGirl.create :approved_user
     @user2  = FactoryGirl.create :approved_user, email: 'test2@example.com', first_name: 'Jim Jones'

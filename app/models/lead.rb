@@ -1,4 +1,7 @@
-class Lead < Contact  
+class Lead < Contact
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  
   field :interested_in
   field :comments
   field :lead_status

@@ -26,8 +26,8 @@ gem 'devise'
 gem 'bcrypt-ruby'
 gem 'airbrake'
 gem 'stripe'
-gem "select2-rails"
-gem "font-awesome-rails"
+gem 'select2-rails'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'thin'

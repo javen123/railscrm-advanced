@@ -1,0 +1,19 @@
+.form-horizontal
+  .fieldset
+    .legend
+    = simple_form_for @organization, :html => { :class => 'form-horizontal' }  do |f|
+      .row
+        .span4
+          = f.input :name
+          = f.input :phone
+          = f.input :address
+        .span4
+          = f.input :city
+          = f.input :state
+          = f.input :zip
+      .row.pull-right
+        = f.submit class: 'btn btn-primary'
+        = link_to 'Cancel', organizations_path, class: "btn btn-danger"
+%br
+.row.span8
+  = link_to 'Add Member', new_admin_user_path(organization_id: @organization), class: 'btn btn-primary'

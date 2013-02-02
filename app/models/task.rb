@@ -1,5 +1,6 @@
 class Task
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   field :task_name
   field :due_date

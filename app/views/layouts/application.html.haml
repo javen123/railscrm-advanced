@@ -13,23 +13,19 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.brand{:href => root_path, :name => "top"} Rails CRM
+        %a.brand{:href => dashboard_path, :name => "top"} Rails CRM
         .nav-collapse.collapse
           %ul.nav.pull-right
             - if current_user.present? && current_user.admin
               %li
                 = link_to 'Admin', :admin
-              %li
-                = link_to 'Logout', destroy_user_session_path, method: :delete
-              %li
-                = link_to 'Profile', edit_user_registration_path
-            - else
+            %li
+              = link_to 'Logout', destroy_user_session_path, method: :delete
+            %li
+              = link_to 'Profile', edit_user_registration_path
+            - if current_user.present? == false
               %li
                 = link_to 'Login', new_user_session_path
-              / %li
-              /   = link_to 'Register', new_user_registration_path
-
-
 
     - if flash.present?
       %section
@@ -37,7 +33,6 @@
           %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
             / %a.close{"data-dismiss" => "alert"} &#215;
             = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
-
     .container
       - if current_user.present? && current_user.approved
         .row
@@ -51,7 +46,7 @@
                 %li
                   = link_to 'Tasks', :tasks
                 %li
-                  = link_to 'Contacts', :contacts              
+                  = link_to 'Contacts', :contacts
                 %li
                   = link_to 'Accounts', :accounts
                 %li
@@ -86,3 +81,6 @@
       - if current_user.present? == false
         .span8
           = yield
+    .row#push
+    .footer
+      Rebel Outpost, LLC © 2012 &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Tel: (323) 379-3970 &nbsp&nbsp&nbsp |&nbsp&nbsp&nbsp Glendale, AZ

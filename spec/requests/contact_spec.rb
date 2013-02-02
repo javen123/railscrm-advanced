@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe 'Contact requests' do
-
+describe 'Contact requests', vcr: true do
+  
   before do
     @user   = FactoryGirl.create :approved_user
     login_as @user

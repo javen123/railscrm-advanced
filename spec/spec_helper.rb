@@ -20,7 +20,6 @@ RSpec.configure do |config|
   config.include Mongoid::Matchers
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
-  #config.extend  VCR::RSpec::Macros
 
   # Clean up the database
   config.before(:suite) do
@@ -34,5 +33,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+end
+
+VCR.configure do |config|
+  config.configure_rspec_metadata!
 end
 

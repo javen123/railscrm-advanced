@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe "Opportunities" do
-
+describe "Opportunities", vcr: true do
+  
   before do
     @user     = FactoryGirl.create :approved_user
     @account  = FactoryGirl.create :account
