@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Organization", vcr: true do
+describe "Admin for Organization", vcr: true do
   
   before do
     @admin     = FactoryGirl.create :admin_user
@@ -47,16 +47,42 @@ describe "Organization", vcr: true do
     page.should have_content 'View Organization'
   end
 
-  it 'adds user to organization' do
+  it 'adds user to organization', js: true do
     visit organization_path(@organization)
     click_link 'Add Member'
-    fill_in 'First name',            with: 'Test'
+    fill_in 'First name',            with: 'Super'
     fill_in 'Last name',             with: 'User'
     fill_in 'Email',                 with: 'org_test@example.com'
     fill_in 'Password',              with: 'password'
     fill_in 'Password confirmation', with: 'password'
+    select2 'User',                  from: 'Organization role'
     click_button 'Create User'
     page.should have_content 'Successfully added new user'
+  end
+
+  before do
+    @user = FactoryGirl.create :user
+    @organization = FactoryGirl.create :organization
+    @organization.users << @user
+    visit organization_path(@organization)
+  end
+
+  it 'lists users' do
+    page.should have_content 'Test User'
+  end
+
+  it 'edits user', js: true do
+    click_link 'edit'
+    select2 'Admin', from: 'Organization role'
+    click_button 'Update User'
+    page.should have_content 'Successfully updated user'
+  end
+
+  it 'deletes user', js: true do
+    click_link 'delete'
+    page.driver.browser.switch_to.alert.accept
+    page.should have_content 'Successfully deleted user'
+    page.should_not have_content 'Test User'
   end
 
 

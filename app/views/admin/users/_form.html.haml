@@ -9,8 +9,7 @@
             = f.input :first_name
             = f.input :last_name
             = f.input :email, as: :email
-            = f.input :password
-            = f.input :password_confirmation
+            = f.input :organization_role,      collection:[['Admin', 'admin'],['User', 'user']]
           .row.pull-right 
             = f.submit class: 'btn btn-primary'
             = link_to 'Cancel', organization_path(@organization), class: "btn btn-danger"

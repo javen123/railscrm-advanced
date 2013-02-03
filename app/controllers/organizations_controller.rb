@@ -1,4 +1,6 @@
 class OrganizationsController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :verify_is_admin, only: [:index, :new, :create, :destroy]
   
   def index
     @organizations = Organization.all
@@ -39,6 +41,11 @@ class OrganizationsController < ApplicationController
       flash[:error] = 'Organization could not be deleted'
       redirect_to :back
     end
+  end
+
+private
+  def verify_is_admin
+    (current_user.nil?) ? redirect_to(root_path) : (redirect_to(organization_path) unless current_user.admin?)
   end
 
 end

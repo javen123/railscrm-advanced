@@ -4,7 +4,7 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
@@ -38,6 +38,7 @@ class User
   field :last_name
   field :company
   field :phone
+  field :organization_role
 
   def full_name
     self.first_name + " " + self.last_name

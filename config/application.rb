@@ -45,6 +45,8 @@ module RebelFoundation
       g.helper              false
       g.view_specs          false
       g.helper_specs        false
+      g.controller_specs    false
+      g.model_specs         false
     end
     
     # Configure the default encoding used in templates for Ruby 1.9.

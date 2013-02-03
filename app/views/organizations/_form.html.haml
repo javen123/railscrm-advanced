@@ -15,5 +15,6 @@
         = f.submit class: 'btn btn-primary'
         = link_to 'Cancel', organizations_path, class: "btn btn-danger"
 %br
-.row.span8
-  = link_to 'Add Member', new_admin_user_path(organization_id: @organization), class: 'btn btn-primary'
+.row.span8  
+- if @organization.users.present?
+  = render 'members'

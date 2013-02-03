@@ -3,4 +3,20 @@
     %h2
       Add New User
   %br
-    = render partial: 'form'
+  .form-horizontal
+  = simple_form_for [:admin, @user], :html => { :class => 'form-horizontal' }  do |f|
+    %fieldset
+      %legend 
+        User Info
+        .row
+          .span4
+            = f.hidden_field :organization_id, value: @organization.id
+            = f.input :first_name
+            = f.input :last_name
+            = f.input :email, as: :email
+            = f.input :password
+            = f.input :password_confirmation
+            = f.input :organization_role,      collection:[['Admin', 'admin'],['User', 'user']]
+          .row.pull-right 
+            = f.submit class: 'btn btn-primary'
+            = link_to 'Cancel', organization_path(@organization), class: "btn btn-danger"
