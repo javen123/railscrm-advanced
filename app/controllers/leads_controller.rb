@@ -3,7 +3,7 @@ class LeadsController < ApplicationController
   
   def new
     @lead = Lead.new
-    @lead_owner     = User.all.map(&:email)
+    @lead_owner     = current_user.organization.users.map(&:email)
     @lead_status    = Lead.status
     @lead_sources   = Lead.sources
     @lead_interests = Lead.interests
@@ -26,7 +26,7 @@ class LeadsController < ApplicationController
   
   def show
     @lead = Lead.find params[:id]
-    @lead_owner     = User.all.map(&:email)
+    @lead_owner     = current_user.organization.users.map(&:email)
     @lead_status    = Lead.status
     @lead_sources   = Lead.sources
     @lead_interests = Lead.interests

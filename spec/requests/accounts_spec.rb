@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Accounts', vcr: true do
 
   before do
-    @user   = FactoryGirl.create :approved_user
+    @user   = FactoryGirl.create :user
     login_as @user
   end
 

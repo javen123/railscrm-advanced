@@ -3,7 +3,7 @@ class OpportunitiesController < ApplicationController
   
 	def new
 		@opportunity 						= Opportunity.new
-		@opportunity_owner  	  = User.all.map(&:email)
+		@opportunity_owner  	  = current_user.organization.users.map(&:email)
     @opportunity_type		   	= Opportunity.types
     @opportunity_stage  		= Opportunity.stages
     @opportunity_account		= Account.all.map(&:name)
@@ -24,7 +24,7 @@ class OpportunitiesController < ApplicationController
 
   def show
 		@opportunity 						= Opportunity.find params['id']
-		@opportunity_owner  	  = User.all.map(&:email)
+		@opportunity_owner  	  = current_user.organization.users.map(&:email)
     @opportunity_type		   	= Opportunity.types
     @opportunity_stage  		= Opportunity.stages
     @opportunity_account		= Account.all.map(&:name)

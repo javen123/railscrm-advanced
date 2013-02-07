@@ -3,8 +3,10 @@ require 'spec_helper'
 describe "Opportunities", vcr: true do
   
   before do
-    @user     = FactoryGirl.create :approved_user
+    @user     = FactoryGirl.create :user
     @account  = FactoryGirl.create :account
+    @organization = FactoryGirl.create :organization
+    @organization.users << @user
     login_as @user
   end
   

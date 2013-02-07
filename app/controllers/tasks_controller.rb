@@ -5,7 +5,7 @@ class TasksController < ApplicationController
     @task = Task.new
     @task_due_dates = Task.due_dates
     @task_types = Task.task_type
-    @task_owners = User.all.map(&:email)
+    @task_owners = current_user.organization.users.map(&:email)
     @leads = Lead.all.map(&:email)
   end
   
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     @task = Task.find params[:id]
     @task_due_dates = Task.due_dates
     @task_types = Task.task_type
-    @task_owners = User.all.map(&:email)
+    @task_owners = current_user.organization.users.map(&:email)
     @leads = Lead.all.map(&:email)
   end
 

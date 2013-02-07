@@ -13,12 +13,7 @@ FactoryGirl.define do
 
 
     factory :admin_user do
-      approved true
       admin true
-    end
-
-    factory :approved_user do
-      approved true
     end
     
   end

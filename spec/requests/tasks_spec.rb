@@ -3,9 +3,12 @@ require 'spec_helper'
 describe 'Tasks', vcr: true do
   
   before do
-    @user   = FactoryGirl.create :approved_user
-    @user2  = FactoryGirl.create :approved_user, email: 'test2@example.com', first_name: 'Jim'
+    @user   = FactoryGirl.create :user
+    @user2  = FactoryGirl.create :user, email: 'test2@example.com', first_name: 'Jim'
     @lead   = FactoryGirl.create :lead, email: 'test@test.com', first_name: 'Jenny', last_name: 'Smith'
+    @organization = FactoryGirl.create :organization
+    @organization.users << @user
+    @organization.users << @user2
     login_as @user
   end
 
