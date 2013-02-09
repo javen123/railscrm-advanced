@@ -13,6 +13,7 @@ class LeadsController < ApplicationController
     @lead = Lead.new params[:lead]
     @lead.update_attributes(assigned_to: @lead.lead_owner)
     if @lead.save
+      current_user.organization.leads << @lead
       LeadMailer.notify_new_lead(@lead.lead_owner, @lead).deliver
       redirect_to lead_path @lead, flash[:notice] = 'New Lead Created'
     else
@@ -21,7 +22,7 @@ class LeadsController < ApplicationController
   end
   
   def index
-    @leads = Lead.all
+    @leads = current_user.organization.leads
   end
   
   def show

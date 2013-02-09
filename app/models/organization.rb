@@ -10,5 +10,6 @@ class Organization
   field :zip 
 
   has_many :users
+  has_many :leads
 
 end

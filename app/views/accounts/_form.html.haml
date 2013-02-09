@@ -6,7 +6,7 @@
         .span4
           = f.input :name
           = f.input :email
-          = f.input :assigned_to, collection: (User.all.map(&:first_name).prepend('None'))
+          = f.input :assigned_to, collection:(@lead_owner)
           = f.input :website
         .span4
           = f.input :phone

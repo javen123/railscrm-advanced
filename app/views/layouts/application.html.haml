@@ -20,8 +20,8 @@
             - if current_user.present?
               %li
                 = link_to 'Logout', destroy_user_session_path, method: :delete
-              / %li
-              /   = link_to 'Profile', edit_user_registration_path
+              %li
+                = link_to 'Profile', edit_user_registration_path
             - if current_user.present? == false
               %li
                 = link_to 'Login', new_user_session_path
@@ -84,5 +84,5 @@
         .span8
           = yield
     .row#push
-    .footer
-      Rebel Outpost, LLC © 2012 &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Tel: (323) 379-3970 &nbsp&nbsp&nbsp |&nbsp&nbsp&nbsp Glendale, AZ
+    / .footer
+    /   Rebel Outpost, LLC © 2012 &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Tel: (323) 379-3970 &nbsp&nbsp&nbsp |&nbsp&nbsp&nbsp Glendale, AZ

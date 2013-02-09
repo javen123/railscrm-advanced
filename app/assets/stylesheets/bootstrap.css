@@ -1,5 +1,5 @@
 
-@import url(https://fonts.googleapis.com/css?family=Scada|Oswald|Abel:300,400,700);
+@import url(https://fonts.googleapis.com/css?family=Scada|Oswald|Abel|Junge:300,400,700);
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
 audio:not([controls]){display:none;}
@@ -22,7 +22,7 @@ textarea{overflow:auto;vertical-align:top;}
 .clearfix:after{clear:both;}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
 .input-block-level{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}
-body{margin:0;font-family:'Abel',Helvetica,Arial,sans-serif;font-size:14px;line-height:18px;color:#222;background:#105147;}
+body{margin:0;font-family:'Scada',Helvetica,Arial,sans-serif;font-size:14px;line-height:18px;color:#222;background:#105147;}
 a{color:#000042;text-decoration:none;}
 a:hover{color:#fff;text-decoration:underline;}
 .row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}

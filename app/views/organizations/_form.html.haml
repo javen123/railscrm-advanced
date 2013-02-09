@@ -15,6 +15,5 @@
         = f.submit class: 'btn btn-primary'
         = link_to 'Cancel', organizations_path, class: "btn btn-danger"
 %br
-.row.span8  
-- if @organization.users.present?
-  = render 'members'
+.row.span8
+= render 'members'

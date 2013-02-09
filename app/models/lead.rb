@@ -12,6 +12,7 @@ class Lead < Contact
   field :opportunity_owner
 
   belongs_to :assigned_to, class_name: 'User'
+  belongs_to :organization
   has_many :notes
   accepts_nested_attributes_for :notes, allow_destroy: true
   validates_presence_of :lead_owner

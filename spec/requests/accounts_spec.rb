@@ -4,6 +4,8 @@ describe 'Accounts', vcr: true do
 
   before do
     @user   = FactoryGirl.create :user
+    @organization = FactoryGirl.create :organization
+    @organization.users << @user
     login_as @user
   end
 
@@ -20,9 +22,10 @@ describe 'Accounts', vcr: true do
     Account.count.should == 1
   end
     
-  it 'has required fields' do
+  it 'has required fields', js: true do
     click_link 'Accounts'
     click_link 'Create Account'
+
     fill_in 'account_name',       with: 'Potato Factory'
     fill_in 'account_website',    with: 'www.spud.com'
     fill_in 'account_email',      with: 'famouspotatos@yahoo.com'

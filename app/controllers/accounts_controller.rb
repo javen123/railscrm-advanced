@@ -7,19 +7,21 @@ class AccountsController < ApplicationController
   
 	def new
 		@account = Account.new
+    @lead_owner = current_user.organization.users.map(&:email)
 	end
 
 	def show
 		@account = Account.find params[:id]
+    @lead_owner = current_user.organization.users.map(&:email)
 	end
 
 	def create
     @account = Account.create params[:account]
-	    if @account.save
-	      redirect_to accounts_path, flash: { notice: 'New Account Created'}
-	    else
-	      render :new
-	    end
+    if @account.save
+      redirect_to accounts_path, flash: { notice: 'New Account Created'}
+    else
+      render :new
+    end
 	end
 
 	def update
