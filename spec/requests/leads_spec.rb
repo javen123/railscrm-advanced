@@ -12,7 +12,7 @@ describe "Leads", vcr: true do
     login_as @user
   end
  
-  it 'should create new lead', js: true do
+  it 'should create new lead' do
     click_link 'Leads'
     click_link 'Create Lead'
     current_path.should == new_lead_path
@@ -23,17 +23,17 @@ describe "Leads", vcr: true do
     fill_in 'lead_email',       with: 'bill@ms.com'
     fill_in 'lead_company',     with: 'Microsoft'
     fill_in 'lead_comments',    with: 'Needs ASAP'
-    select2 "#{@user2.email}",  from: 'Lead owner'
-    select2 'Web Application',  from: 'Interested in'
-    select2 'New',              from: 'Lead status'
-    select2 'Web Lead',         from: 'Lead source'
+    select "#{@user2.email}",  from: 'Lead owner'
+    select 'Web Application',  from: 'Interested in'
+    select 'New',              from: 'Lead status'
+    select 'Web Lead',         from: 'Lead source'
     sleep 1
     click_button 'Create Lead'
     Lead.last.last_name.should == 'Gates'
     page.should have_content 'New Lead Created'
   end
 
-  it 'adds new lead to org on creation', js: true do
+  it 'adds new lead to org on creation' do
     click_link 'Leads'
     click_link 'Create Lead'
     current_path.should == new_lead_path
@@ -44,10 +44,10 @@ describe "Leads", vcr: true do
     fill_in 'lead_email',       with: 'bill@ms.com'
     fill_in 'lead_company',     with: 'Microsoft'
     fill_in 'lead_comments',    with: 'Needs ASAP'
-    select2 "#{@user2.email}",  from: 'Lead owner'
-    select2 'Web Application',  from: 'Interested in'
-    select2 'New',              from: 'Lead status'
-    select2 'Web Lead',         from: 'Lead source'
+    select  "#{@user2.email}",  from: 'Lead owner'
+    select  'Web Application',  from: 'Interested in'
+    select  'New',              from: 'Lead status'
+    select  'Web Lead',         from: 'Lead source'
     sleep 1
     click_button 'Create Lead'
     Lead.last.last_name.should == 'Goats'
@@ -55,7 +55,7 @@ describe "Leads", vcr: true do
     @organization.leads.last.should == Lead.last
   end
 
-  it 'notifies new lead create', js: true do
+  it 'notifies new lead create' do
     click_link 'Leads'
     click_link 'Create Lead'
     
@@ -65,10 +65,10 @@ describe "Leads", vcr: true do
     fill_in 'lead_email',       with: 'bill2@ms.com'
     fill_in 'lead_company',     with: 'Microsoft'
     fill_in 'lead_comments',    with: 'Needs ASAP'
-    select2 "#{@user2.email}",  from: 'Lead owner'
-    select2 'Web Application',  from: 'Interested in'
-    select2 'New',              from: 'Lead status'
-    select2 'Web Lead',         from: 'Lead source'
+    select  "#{@user2.email}",  from: 'Lead owner'
+    select  'Web Application',  from: 'Interested in'
+    select  'New',              from: 'Lead status'
+    select  'Web Lead',         from: 'Lead source'
     sleep 1
     click_button 'Create Lead'
     ActionMailer::Base.deliveries[0].to.should include @user2.email
@@ -83,19 +83,19 @@ describe "Leads", vcr: true do
       @account = FactoryGirl.create :account    
     end
     
-    it 'should edit a lead', js: true do
+    it 'should edit a lead' do
       visit lead_path @lead
       fill_in 'lead_company', with: 'XYZ'
-      select2 'Contacted', from: 'Lead status'
+      select  'Contacted', from: 'Lead status'
       sleep 2
       click_button 'Update'
       page.should have_content 'Lead Updated'
     end
 
-    it 'cannot assign lead to non org user', js: true do
+    it 'cannot assign lead to non org user' do
       pending 're-write test'
       visit lead_path @lead
-      select2 "#{@user3.email}", from: 'Lead owner'
+      select  "#{@user3.email}", from: 'Lead owner'
       click_button 'Update'
       @lead.assigned_to.should_not == @user3.email
       page.should_not have_content 'Lead Updated'
@@ -107,9 +107,9 @@ describe "Leads", vcr: true do
       page.should_not have_content 'Bob Marley'
     end
     
-    it 'assigns lead to user', js: true do
+    it 'assigns lead to user' do
       visit lead_path @lead
-      select2 "#{@user2.email}", from: 'Lead owner'
+      select  "#{@user2.email}", from: 'Lead owner'
       sleep 2
       click_button 'Update'
       page.should have_content 'Lead Updated'
@@ -117,9 +117,9 @@ describe "Leads", vcr: true do
       page.should have_content @user2.email
     end
     
-    it 'reassigns lead', js: true do 
+    it 'reassigns lead' do 
       visit lead_path @lead
-      select2 "#{@user.email}", from: 'Lead owner'
+      select  "#{@user.email}", from: 'Lead owner'
       sleep 2
       click_button 'Update'
       page.should have_content 'Lead Updated'
@@ -135,7 +135,7 @@ describe "Leads", vcr: true do
       page.should_not have_content 'Bill Gates'
     end
     
-    it 'adds a note', js: true do
+    it 'adds a note' do
       pending 'fix'
       visit lead_path @lead
       click_button 'New Note'
@@ -145,12 +145,12 @@ describe "Leads", vcr: true do
       page.should have_content 'this is a note'
     end
 
-    it 'converts a lead', js: true do
+    it 'converts a lead' do
       visit lead_path @lead
       click_link 'Convert Lead'
-      select2 "#{@account.name}", from: 'Account name'
+      select  "#{@account.name}", from: 'Account name'
       fill_in 'Opportunity name', with: 'New Opportunity'
-      select2 "#{@user.email}", from: 'Opportunity owner'
+      select  "#{@user.email}", from: 'Opportunity owner'
       count_before = Opportunity.count
       sleep 2
       click_button 'Convert'

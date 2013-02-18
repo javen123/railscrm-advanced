@@ -1,5 +1,4 @@
-class OpportunitiesController < ApplicationController
-  before_filter :authenticate_user!
+class OpportunitiesController < PublicController
   
 	def new
 		@opportunity 						= Opportunity.new

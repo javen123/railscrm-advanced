@@ -83,3 +83,6 @@
     .row#push
     .footer
       Rebel Outpost, LLC © 2012 &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Tel: (323) 379-3970 &nbsp&nbsp&nbsp |&nbsp&nbsp&nbsp Glendale, AZ
+    - unless Rails.env.test?
+      :javascript
+        $(document).ready(function(){init_select2();});

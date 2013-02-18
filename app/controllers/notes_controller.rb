@@ -1,5 +1,4 @@
-class NotesController < ApplicationController
-  before_filter :authenticate_user!
+class NotesController < PublicController
   
   def new
     @lead = Lead.new

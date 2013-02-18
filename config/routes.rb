@@ -6,14 +6,12 @@ RebelFoundation::Application.routes.draw do
     match "logout" => "devise/sessions#destroy", as: "logout"  
     match "login" => "devise/sessions#new", as: "login"
     match "dashboard" => "users#dashboard", as: "dashboard"
-    match "admin"=> "organizations#index", as: "admin"
+    match "admin"=> "admin#dashboard", as: "admin"
   end
 
   match "web_to_lead" => "leads#new_web_lead", :as => "web_to_lead"
   match "create_lead" => "leads#create_web_lead", :as => "create_lead"
   match "generate" => "leads#external_form"
-  
-  resources :organizations
   
   resources :leads do
     resources :notes
@@ -25,8 +23,10 @@ RebelFoundation::Application.routes.draw do
     end
   end
 
+  match 'admin' => 'admin#dashboard', as: 'admin'
   namespace :admin do
     resources :users
+    resources :organizations
   end
 
 

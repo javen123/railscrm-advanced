@@ -10,16 +10,16 @@ describe "Opportunities", vcr: true do
     login_as @user
   end
   
-  it 'creates an opportunity', js: true do
+  it 'creates an opportunity' do
     click_link 'Opportunities'
     click_link 'Create New Opportunity'
 
     fill_in 'opportunity_opportunity_name', 		  with: 'Next Big Deal'
-    select2 'Big Money', 					                from: 'Account name'
-    select2 'New Customer', 					            from: 'Type'
+    select 'Big Money', 					                from: 'Account name'
+    select 'New Customer', 					            from: 'Type'
     fill_in 'opportunity_amount', 	              with: '10,000'
-    select2 'Proposal', 							            from: 'Stage'
-    select2 "#{@user.email}",				              from: 'Owner'
+    select 'Proposal', 							            from: 'Stage'
+    select "#{@user.email}",				              from: 'Owner'
     fill_in 'opportunity_closing_date',           with: '09/11/2012'
     fill_in 'opportunity_probability', 	          with: '50%'
     fill_in 'opportunity_contact_name',	          with: 'Mister Smith'

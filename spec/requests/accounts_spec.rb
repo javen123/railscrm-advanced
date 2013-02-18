@@ -22,7 +22,7 @@ describe 'Accounts', vcr: true do
     Account.count.should == 1
   end
     
-  it 'has required fields', js: true do
+  it 'has required fields' do
     click_link 'Accounts'
     click_link 'Create Account'
 

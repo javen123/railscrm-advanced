@@ -1,4 +1,4 @@
-class LeadsController < ApplicationController
+class LeadsController < PublicController
   before_filter :authenticate_user!, :except => ['external_form']
   
   def new

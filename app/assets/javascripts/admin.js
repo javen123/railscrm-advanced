@@ -1,7 +1,4 @@
-
-$(function() {
-
-    // Convert select boxes to chosen if they have the chosen class.
-    $(".chosen-select").select2();
-    $(".chosen-deselect").select2({ allowClear: true });
-});
+function init_select2 () {
+  $(".chosen-select").select2();
+  $(".chosen-deselect").select2({ allowClear: true });
+}

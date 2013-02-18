@@ -1,5 +1,4 @@
-class ContactsController < ApplicationController
-  before_filter :authenticate_user!
+class ContactsController < PublicController
 
   def index
     @contact = Contact.all

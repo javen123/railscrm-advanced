@@ -1,5 +1,4 @@
-class AccountsController < ApplicationController
-  before_filter :authenticate_user!
+class AccountsController < PublicController
   
 	def index
 		@accounts = Account.all

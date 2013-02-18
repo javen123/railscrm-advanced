@@ -44,6 +44,7 @@ group :development do
 end
 
 group :test, :development do
+  gem 'rack_session_access'
   gem 'factory_girl_rails'
   gem 'rspec-rails'
   gem 'capybara', '1.1.4'
@@ -59,6 +60,9 @@ group :test, :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'puma'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
+  gem 'guard-livereload'
   gem 'capybara-select2', git: 'https://github.com/brobertsaz/capybara-select2'
 
   # Pretty printed test output
