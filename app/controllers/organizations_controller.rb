@@ -4,10 +4,12 @@ class OrganizationsController < ApplicationController
   
   def index
     @organizations = Organization.all
+    render layout: 'admin'
   end
 
   def new
     @organization = Organization.new
+    render layout: 'admin'
   end
 
   def create

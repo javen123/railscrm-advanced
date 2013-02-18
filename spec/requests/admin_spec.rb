@@ -1,14 +1,21 @@
 require 'spec_helper'
 
-describe "Admin for Organization", vcr: true do
+describe "Admin", vcr: true do
   
   before do
     @admin     = FactoryGirl.create :admin_user
     login_as @admin
+
+  end
+
+  it 'shows admin page' do
+    visit organizations_path
+    page.should have_content 'Organizations'
+    page.should_not have_content 'Dashboard'
   end
 
   it 'creates organization' do
-    click_link 'Admin'
+    visit organizations_path
     click_link 'Create New Organization'
     fill_in 'Name',     with: 'New Org'
     fill_in 'Phone',    with: '8005551212'
@@ -26,7 +33,7 @@ describe "Admin for Organization", vcr: true do
   end
 
   it 'edits organization' do
-    click_link 'Admin'
+    visit organizations_path
     click_link 'edit'
     fill_in 'Name', with: 'New Name'
     click_button 'Update'
@@ -34,14 +41,14 @@ describe "Admin for Organization", vcr: true do
   end
 
   it 'deletes organization', js: true do
-    click_link 'Admin'
+    visit organizations_path
     click_link 'delete'
     page.driver.browser.switch_to.alert.accept
     page.should have_content 'Organization Deleted'
     page.should_not have_content 'New Name'
   end
 
-  it 'shows organiation' do
+  it 'shows organization' do
     visit organizations_path
     click_link 'New Org'
     page.should have_content 'View Organization'

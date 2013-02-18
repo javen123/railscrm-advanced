@@ -20,19 +20,21 @@ RSpec.configure do |config|
   config.include Mongoid::Matchers
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers
+  config.extend  VCR::RSpec::Macros
 
-  # Clean up the database
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.orm = 'mongoid'
+    DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.include Capybara::DSL
-
   config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
     DatabaseCleaner.clean
   end
 
+  config.include Capybara::DSL
 end
 
 VCR.configure do |config|

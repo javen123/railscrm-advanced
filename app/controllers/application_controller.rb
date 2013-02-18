@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_user
 
   def after_sign_in_path_for(resource)
-    dashboard_path
+    if current_user.admin?
+      admin_path
+    else
+      dashboard_path
+    end
   end
  
 private
