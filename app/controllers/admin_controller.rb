@@ -1,5 +1,7 @@
 class AdminController < ApplicationController
+  
   def dashboard
-    render text: 'baller'
+    @organizations = Organization.all
   end
+
 end

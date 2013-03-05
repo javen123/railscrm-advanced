@@ -1,0 +1,46 @@
+%h1
+  Admin Dashboard
+
+.well
+  %h2 Organizations
+  .functions.pull-right
+    = link_to 'Create New Organization', new_admin_organization_path, class: 'btn btn-inverse'
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th
+          Name
+        %th
+          Phone
+        %th
+          Address
+        %th
+          City
+        %th
+          State
+        %th
+          Zip
+
+    %tbody
+    - if @organizations.present?
+      - @organizations.each do |f|
+        %tr
+          %td
+            = link_to f.name, admin_organization_path(f)
+          %td
+            = f.phone
+          %td
+            = f.address
+          %td
+            =f.city
+          %td
+            =f.state
+          %td
+            =f.zip
+          %td
+            = link_to '', admin_organization_path(f), class: 'icon-edit', id: 'edit'
+            = link_to '', admin_organization_path(f), method: 'delete', class: 'icon-trash', data: {confirm: 'Are you sure that you want to delete this contact?'}, id: 'delete'
+
+
+          

@@ -1,6 +1,6 @@
 body
-  background-color: #fff
-  //background: url(Light-Gray-Background.png) repeat
+  //background-color: #fff
+  background: url(Light-Gray-Background.png) repeat
   p
     color: #5B5B5B
     font-family: 'Scada'
@@ -12,7 +12,12 @@ body
 .navbar
   font-family: 'Oswald',sans-serif
   font-size: 16px
-  padding-bottom: 30px
+  background: #0b00d9 url(railscrm.png) no-repeat left
+  height: 120px
+  -webkit-background-size: cover
+  -moz-background-size: cover
+  -o-background-size: cover
+  background-size: cover
 
   .brand
     font-family: 'Oswald'
@@ -29,9 +34,8 @@ body
         color: #ddd
   .navbar-inner
     overflow: hidden
-    background: #000000 url(header.png) repeat
-    -moz-border-radius: 0em 0em 2em 2em
-    border-radius: 0em 0em 2em 2em
+    padding-top: 50px
+
 
 .label
   padding-top: 5px
@@ -47,31 +51,29 @@ body
     text-decoration: none
 
 .user-nav
-  position: absolute
-  top: 115px
-  margin-bottom: 20px
-
+  padding-bottom: 30px
   ul 
     padding: 0 
     margin: 0
-    bottom: 30px
-
   li
     list-style-type: none
     float: left
     display: block
-    padding-right: 60px
+    padding-right: 50px
+    padding-bottom: 20px
     font-size: 20px
-
     a
       color: #11614e
       padding: 5px
       font-weight: bold
-      // moz-box-shadow: 2px 2px 2px #888
-      //webkit-box-shadow: 2px 2px 2px #888
-      //box-shadow: 2px 2px 2px #888
-      //moz-border-radius: 0.25em 0.25em 0.25em 0.25em
-      //border-radius: 0.25em 0.25em 0.25em 0.25em
+      background-color: #fff
+      -moz-border-radius: 0.25em 0.25em 0.25em 0.25em
+      border-radius: 0.25em 0.25em 0.25em 0.25em
+      text-align: center
+      moz-box-shadow: 0.15em 0.15em 0.15em #888
+      webkit-box-shadow: 0.15em 0.15em 0.15em #888
+      box-shadow: 0.15em 0.15em 0.15em #888
+
     a:hover
       color: #111
       text-decoration: none
@@ -109,3 +111,4 @@ body
   p 
     padding-bottom: 20px
     line-height: 24px
+    text-align: justify

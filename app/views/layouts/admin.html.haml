@@ -12,8 +12,6 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        /= link_to image_tag('crm_logo.gif'), dashboard_path
-        %a.brand{:href => dashboard_path, :name => "top"} Rails CRM
         .nav-collapse.collapse
           %ul.nav.pull-right
             - if current_user.present?
@@ -36,15 +34,12 @@
       - if current_user.admin?
         .row
           .span8.offset3
-            .user-nav
-              %ul
-                %li
-                  = link_to 'Dashboard', :dashboard
-                %li
-                  = link_to 'Leads', :leads
+            / .user-nav
+            /   %ul
+            /     %li
+            /       = link_to 'Dashboard', :dashboard
+            /     %li
+            /       = link_to 'Leads', :leads
                 
             .span8
               = yield
-    .row#push
-    .footer
-      Rebel Outpost, LLC © 2012 &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Tel: (323) 379-3970 &nbsp&nbsp&nbsp |&nbsp&nbsp&nbsp Glendale, AZ

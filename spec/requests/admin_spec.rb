@@ -6,11 +6,10 @@ describe "Admin", vcr: true do
     @organization = FactoryGirl.create :organization
     @admin = FactoryGirl.create :admin_user
     login_as @admin
-    visit '/'
   end
 
   it 'shows admin page' do
-    current_url.should == admin_url
+    current_path.should == admin_path
   end
 
   it 'creates organization' do
@@ -26,47 +25,43 @@ describe "Admin", vcr: true do
     page.should have_content 'New Org'
   end
 
-  context 'with an organization' do
-    before do
-      @organization = FactoryGirl.create :organization
-    end
+  it 'edits organization' do
+    click_link 'edit'
+    fill_in 'Name', with: 'New Name'
+    click_button 'Update'
+    page.should have_content 'Organization successfully updated'
+  end
 
-    it 'edits organization' do
-      click_link 'edit'
-      fill_in 'Name', with: 'New Name'
-      click_button 'Update'
-      page.should have_content 'Organization successfully updated'
-    end
+  it 'deletes organization', js: true do
+    click_link 'delete'
+    page.driver.browser.switch_to.alert.accept
+    page.should have_content 'Organization Deleted'
+    page.should_not have_content 'New Name'
+  end
 
-    it 'deletes organization' do
-      click_link 'delete'
-      page.driver.browser.switch_to.alert.accept
-      page.should have_content 'Organization Deleted'
-      page.should_not have_content 'New Name'
-    end
+  it 'shows organization' do
+    click_link 'New Org'
+    page.should have_content 'View Organization'
+  end
 
-    it 'shows organization' do
-      click_link 'New Org'
-      page.should have_content 'View Organization'
-    end
-
-    it 'adds user to organization' do
-      visit organization_path(@organization)
-      click_link 'Add Member'
-      fill_in 'First name',            with: 'Super'
-      fill_in 'Last name',             with: 'User'
-      fill_in 'Email',                 with: 'org_test@example.com'
-      fill_in 'Password',              with: 'password'
-      fill_in 'Password confirmation', with: 'password'
-      select 'User',                  from: 'Organization role'
-      click_button 'Create User'
-      page.should have_content 'Successfully added new user'
-    end
+  it 'adds user to organization' do
+    visit admin_organization_path(@organization)
+    click_link 'Add Member'
+    fill_in 'First name',            with: 'Super'
+    fill_in 'Last name',             with: 'User'
+    fill_in 'Email',                 with: 'org_test@example.com'
+    fill_in 'Password',              with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    select 'User',                  from: 'Organization role'
+    click_button 'Create User'
+    page.should have_content 'Successfully added new user'
+  end
 
     context 'with users' do
       before do
+        @user = FactoryGirl.create :user
         @organization.users << @user
-        visit organization_path(@organization)
+        visit admin_organization_path(@organization)
       end
 
       it 'lists users' do
@@ -80,12 +75,12 @@ describe "Admin", vcr: true do
         page.should have_content 'Successfully updated user'
       end
 
-      it 'deletes user' do
+      it 'deletes user', js: true do
         click_link 'delete'
         page.driver.browser.switch_to.alert.accept
         page.should have_content 'Successfully deleted user'
         page.should_not have_content 'Test User'
       end
     end
-  end
+
 end

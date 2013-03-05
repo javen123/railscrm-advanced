@@ -24,18 +24,16 @@ RebelFoundation::Application.routes.draw do
   end
 
   match 'admin' => 'admin#dashboard', as: 'admin'
+  
   namespace :admin do
     resources :users
     resources :organizations
   end
 
-
   resources :tasks
   resources :contacts
   resources :accounts
   resources :opportunities
-
-  
   
   root to: 'pages#index'
 end
