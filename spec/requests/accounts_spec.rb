@@ -38,7 +38,7 @@ describe 'Accounts', vcr: true do
 
   context 'with an existing account' do
     before do
-      @account   = FactoryGirl.create :account
+      @account   = FactoryGirl.create :account, organization: @organization.id
     end
 
     it 'deletes account' do

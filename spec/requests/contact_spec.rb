@@ -4,6 +4,8 @@ describe 'Contact requests', vcr: true do
   
   before do
     @user   = FactoryGirl.create :user
+    @organization = FactoryGirl.create :organization
+    @organization.users << @user
     login_as @user
   end
 
@@ -38,7 +40,7 @@ describe 'Contact requests', vcr: true do
 
   context 'with existing contact' do
     before do
-      @contact = FactoryGirl.create :contact
+      @contact = FactoryGirl.create :contact, organization: @organization.id
     end
     
     it 'deletes contact' do

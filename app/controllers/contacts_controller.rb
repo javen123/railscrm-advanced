@@ -1,15 +1,19 @@
 class ContactsController < PublicController
 
   def index
-    @contact = current_user.organization.contacts.all
+    @contacts = current_user.organization.contacts
   end
   
   def new
-    @contact = Contact.new
+    @contact = current_user.organization.contacts.new
+  end
+
+  def show
+    @contact = current_user.organization.contacts.find params[:id]
   end
   
   def create
-    @contact = Contact.new params[:contact]
+    @contact = current_user.organization.contacts.new params[:contact]
     if @contact.save
       redirect_to contacts_path, flash: { notice: 'New Contact Created'}
     else
@@ -18,7 +22,7 @@ class ContactsController < PublicController
   end
 
   def update
-    @contact = Contact.find params[:id]
+    @contact = current_user.organization.contacts.find params[:id]
 
     if @contact.update_attributes params[:contact]
       redirect_to contact_path @contact, flash[:notice] = 'Contact Updated'
@@ -29,7 +33,7 @@ class ContactsController < PublicController
 
 
   def destroy
-    @contact = Contact.find params[:id]
+    @contact = current_user.organization.contacts.find params[:id]
     if @contact == @current_user
       flash[:notice] = 'Cannot delete yourself'
       redirect_to :back 
@@ -42,8 +46,5 @@ class ContactsController < PublicController
     end
   end
   
-  def show
-    @contact = Contact.find params[:id]
-  end
 
 end

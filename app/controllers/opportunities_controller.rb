@@ -1,7 +1,7 @@
 class OpportunitiesController < PublicController
   
 	def new
-		@opportunity 						= Opportunity.new
+		@opportunity 						= current_user.organization.opportunities.new
 		@opportunity_owner  	  = current_user.organization.users.map(&:email)
     @opportunity_type		   	= Opportunity.types
     @opportunity_stage  		= Opportunity.stages
@@ -9,7 +9,7 @@ class OpportunitiesController < PublicController
 	end
 
 	def create
-    @opportunity = Opportunity.new params[:opportunity]
+    @opportunity = current_user.organization.opportunities.new params[:opportunity]
     if @opportunity.save
       redirect_to opportunity_path @opportunity, flash[:notice] = 'New Opportunity Created'
     else
@@ -18,11 +18,11 @@ class OpportunitiesController < PublicController
   end
   
   def index
-    @opportunities = current_user.organization.opportunities.all
+    @opportunities = current_user.organization.opportunities
   end
 
   def show
-		@opportunity 						= Opportunity.find params['id']
+		@opportunity 						= current_user.organization.opportunities.find params['id']
 		@opportunity_owner  	  = current_user.organization.users.map(&:email)
     @opportunity_type		   	= Opportunity.types
     @opportunity_stage  		= Opportunity.stages
@@ -30,7 +30,7 @@ class OpportunitiesController < PublicController
 	end
 
 	def update
-    @opportunity = Opportunity.find params[:id]
+    @opportunity = current_user.organization.opportunities.find params[:id]
 
     if @opportunity.update_attributes params[:opportunity]
       redirect_to opportunity_path @opportunity, flash[:notice] = 'Opportunity Successfully Updated'
@@ -41,7 +41,7 @@ class OpportunitiesController < PublicController
 
 
   def destroy
-    @opportunity = Opportunity.find params[:id]
+    @opportunity = current_user.organization.opportunities.find params[:id]
     
     if @opportunity.destroy
       flash[:notice] = 'Opportunity Deleted'

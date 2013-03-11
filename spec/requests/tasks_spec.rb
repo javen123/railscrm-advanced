@@ -54,7 +54,7 @@ describe 'Tasks', vcr: true do
 
   context 'edit' do
     before do
-      @task = FactoryGirl.create :task, lead_for_task: @lead.first_name
+      @task = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user.id
     end
 
     it 'edits task' do
@@ -95,7 +95,7 @@ describe 'Tasks', vcr: true do
 
   context 'delete' do
     before do
-      @task   = FactoryGirl.create :task, lead_for_task: @lead.first_name
+      @task   = FactoryGirl.create :task, lead_for_task: @lead.first_name, user: @user.id
     end
 
     it 'deletes task' do  

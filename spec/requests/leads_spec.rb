@@ -80,7 +80,7 @@ describe "Leads", vcr: true do
     before do
       @lead   = FactoryGirl.create :lead, first_name: 'Bill', last_name: 'Gates', phone: '8885551212', interested_in: 'ios', lead_status: 'new', lead_source: 'web', lead_owner: @user.email, organization: @organization
       @lead2  = FactoryGirl.create :lead, first_name: 'Bob', last_name: 'Marley', phone: '8005551212', interested_in: 'web_app', lead_status: 'contacted', lead_owner: @user3.email, lead_source: 'referral', email: 'bob@marley.com'
-      @account = FactoryGirl.create :account    
+      @account = FactoryGirl.create :account, organization: @organization.id    
     end
     
     it 'should edit a lead' do

@@ -32,6 +32,7 @@ class User
   field :last_sign_in_ip,    :type => String
 
   has_many :leads
+  has_many :tasks
   belongs_to :organization
 
   field :first_name

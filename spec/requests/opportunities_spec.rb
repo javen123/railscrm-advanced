@@ -4,8 +4,8 @@ describe "Opportunities", vcr: true do
   
   before do
     @user     = FactoryGirl.create :user
-    @account  = FactoryGirl.create :account
     @organization = FactoryGirl.create :organization
+    @account  = FactoryGirl.create :account, organization: @organization.id
     @organization.users << @user
     login_as @user
   end
@@ -16,9 +16,9 @@ describe "Opportunities", vcr: true do
 
     fill_in 'opportunity_opportunity_name', 		  with: 'Next Big Deal'
     select 'Big Money', 					                from: 'Account name'
-    select 'New Customer', 					            from: 'Type'
+    select 'New Customer', 					              from: 'Type'
     fill_in 'opportunity_amount', 	              with: '10,000'
-    select 'Proposal', 							            from: 'Stage'
+    select 'Proposal', 							              from: 'Stage'
     select "#{@user.email}",				              from: 'Owner'
     fill_in 'opportunity_closing_date',           with: '09/11/2012'
     fill_in 'opportunity_probability', 	          with: '50%'
@@ -32,7 +32,7 @@ describe "Opportunities", vcr: true do
   context 'with created opportunity' do
 
     before do
-      @opportunity = FactoryGirl.create :opportunity, owner: @user.email, account_name: @account.name
+      @opportunity = FactoryGirl.create :opportunity, owner: @user.email, account_name: @account.name, organization: @organization.id
     end
 
     it 'edits opportunity' do
