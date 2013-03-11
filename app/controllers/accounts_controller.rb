@@ -5,17 +5,17 @@ class AccountsController < PublicController
 	end
   
 	def new
-		@account = Account.new
+		@account = current_user.organization.accounts.new
     @lead_owner = current_user.organization.users.map(&:email)
 	end
 
 	def show
-		@account = Account.find params[:id]
+		@account = current_user.organization.accounts.find params[:id]
     @lead_owner = current_user.organization.users.map(&:email)
 	end
 
 	def create
-    @account = Account.create params[:account]
+    @account = current_user.organization.accounts.new params[:account]
     if @account.save
       redirect_to accounts_path, flash: { notice: 'New Account Created'}
     else
@@ -24,7 +24,7 @@ class AccountsController < PublicController
 	end
 
 	def update
-		@account = Account.find params[:id]
+		@account = current_user.organization.accounts.find params[:id]
 
 		 if @account.update_attributes params[:account]
       redirect_to account_path @account, flash[:notice] = 'Account Updated'
@@ -34,7 +34,7 @@ class AccountsController < PublicController
   end
 
 	def destroy
-    @account = Account.find params[:id]
+    @account = current_user.organization.accounts.find params[:id]
     if @account.destroy
       flash[:notice] = 'Account Deleted'
       redirect_to :back
