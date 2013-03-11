@@ -25,6 +25,7 @@ gem 'airbrake'
 gem 'stripe'
 gem 'select2-rails'
 gem 'font-awesome-rails'
+gem 'therubyracer'
 
 group :production do
   gem 'thin'
