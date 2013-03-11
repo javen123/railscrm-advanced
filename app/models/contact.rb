@@ -17,6 +17,8 @@ class Contact
                     message: 'Invalid e-mail address' }
   validates_presence_of :first_name, :last_name, :email
 
+  belongs_to :organization
+
 
   def full_name
     if self.last_name != nil

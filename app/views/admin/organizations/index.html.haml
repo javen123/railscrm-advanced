@@ -20,7 +20,6 @@
           Zip
 
     %tbody
-      - binding.pry
       - @organizations.each do |f|
         %tr
           %td
@@ -38,3 +37,4 @@
           %td
             = link_to '', organization_path(f), class: 'icon-edit', id: 'edit'
             = link_to '', organization_path(f), method: 'delete', class: 'icon-trash', data: {confirm: 'Are you sure that you want to delete this contact?'}, id: 'delete'
+

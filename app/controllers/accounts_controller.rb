@@ -1,7 +1,7 @@
 class AccountsController < PublicController
   
 	def index
-		@accounts = Account.all
+		@accounts = current_user.organization.accounts
 	end
   
 	def new

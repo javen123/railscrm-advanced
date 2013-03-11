@@ -1,7 +1,7 @@
 class ContactsController < PublicController
 
   def index
-    @contact = Contact.all
+    @contact = current_user.organization.contacts.all
   end
   
   def new

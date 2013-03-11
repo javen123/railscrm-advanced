@@ -34,10 +34,10 @@
       - if current_user.admin?
         .row
           .span8.offset3
-            / .user-nav
-            /   %ul
-            /     %li
-            /       = link_to 'Dashboard', :dashboard
+            .user-nav
+              %ul
+                %li
+                  = link_to 'Admin', :admin
             /     %li
             /       = link_to 'Leads', :leads
                 

@@ -18,7 +18,7 @@ class OpportunitiesController < PublicController
   end
   
   def index
-    @opportunities = Opportunity.all
+    @opportunities = current_user.organization.opportunities.all
   end
 
   def show

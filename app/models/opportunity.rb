@@ -15,6 +15,8 @@ class Opportunity
 
   validates_presence_of :opportunity_name, :account_name, :owner
 
+  belongs_to :organization
+
 
   TYPES  = [['New Customer', 'new_customer'], ['Existing Customer', 'existing_customer']]
   STAGES = [['Prospecting', 'prospecting'], ['Proposal', 'proposal'], ['Analysis', 'analysis'], ['Presentation', 'presentation'], ['Negotiation', 'negotiation'], ['Final Review', 'final_review'], ['Closed/Won','closed_won'], ['Closed/Lost', 'closed_lost']]
