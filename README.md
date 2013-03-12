@@ -1,11 +1,11 @@
 **Rails CRM**
 =============
 
-Rails CRM is an opensource Customer Relations Management application.  Intended to be similiar to Paid CRM's, Rails CRM is going to be the bare bones minimum for a CRM but yet can be cloned and modified however you please.
+Rails CRM - advanced is an opensource Customer Relations Management application.  Intended to be similiar to Paid CRM's, Rails CRM - advanced is a continuing project from the bare bones railscrm.
 
 Rails CRM uses Mongoid and Mongodb, Twitter Bootstrap, Devise for authentication, as well as HAML and SASS.  I prefer to use nosql and Mongodb is our favorite.  I looked at a few other opensource CRM's but did not find any that used mongodb.  Rails CRM became a pet project and was a starting point for one of RebelHolds interns Rick Carlino.
 
-There is a live version on Heroku at http://demo.railscrm.com
+There is a live version on Heroku at http://www.railscrm.com
 
 
 Mongodb
@@ -93,7 +93,7 @@ Contributing
 
 If you make improvements to this application, please share with others.
 
-Send the author a message, create an [issue](https://github.com/brobertsaz/railscrm/issues), or fork the project and submit a pull request.
+Send the author a message, create an [issue](https://github.com/brobertsaz/railscrm-advanced/issues), or fork the project and submit a pull request.
 
 If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I’ll add a note to the README so that others can find your work.
 
