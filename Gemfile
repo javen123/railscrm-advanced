@@ -51,22 +51,18 @@ group :test, :development do
   gem 'mongoid-rspec'
   gem 'capistrano'
   gem 'capistrano_colors'
-  gem 'timecop'
   gem 'vcr'
   gem 'fakeweb'
   gem 'email_spec' 
   gem 'pry'
   gem 'pry-nav'
   gem 'puma'
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'capybara-select2', git: 'https://github.com/brobertsaz/capybara-select2'
 
   # Pretty printed test output
   gem 'turn', require: false
-
-  gem 'simplecov',      require: false
-  gem 'simplecov-rcov', require: false
 end
 
