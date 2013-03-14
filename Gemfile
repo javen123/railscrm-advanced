@@ -26,6 +26,8 @@ gem 'stripe'
 gem 'select2-rails'
 gem 'font-awesome-rails'
 gem 'therubyracer'
+gem 'newrelic_rpm'
+
 
 group :production do
   gem 'thin'

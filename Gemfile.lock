@@ -180,6 +180,7 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     netrc (0.7.7)
+    newrelic_rpm (3.5.8.72)
     nokogiri (1.5.6)
     origin (1.0.11)
     orm_adapter (0.4.0)
@@ -350,6 +351,7 @@ DEPENDENCIES
   mongoid
   mongoid-paperclip
   mongoid-rspec
+  newrelic_rpm
   pg
   pry
   pry-nav
