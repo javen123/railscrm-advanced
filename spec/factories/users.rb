@@ -15,7 +15,7 @@ FactoryGirl.define do
     factory :admin_user do
       admin true
     end
-    
+
   end
 
 end

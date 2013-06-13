@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'gibberish'
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
 
 group :assets do
   gem 'sass-rails'
@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier'
 end
 
+gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'mongoid'
@@ -53,9 +54,6 @@ group :test, :development do
   gem 'pry'
   gem 'pry-nav'
   gem 'puma'
-  # gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-rspec'
-  gem 'guard-livereload'
   gem 'capybara-select2', git: 'https://github.com/brobertsaz/capybara-select2'
 
   # Pretty printed test output

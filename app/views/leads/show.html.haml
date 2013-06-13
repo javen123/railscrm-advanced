@@ -1,13 +1,12 @@
 .form.well
-  .label
-    %h2
-      View Lead
+  %h2
+    View Lead
   %br
     .pull-right
       = link_to 'Convert Lead', convert_lead_path(@lead), data: {toggle: 'modal'}, class: 'btn btn-primary'
     = render partial: 'form'
 
-  %fieldset 
+  %fieldset
     %legend Lead Activities
     %h3
       Recent Activity for #{@lead.full_name}
@@ -27,6 +26,6 @@
           = note.content
 
 
-    
+
 
 

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Admin", vcr: true do
-  
+
   before do
     @organization = FactoryGirl.create :organization
     @admin = FactoryGirl.create :admin_user

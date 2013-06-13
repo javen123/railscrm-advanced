@@ -24,60 +24,61 @@
               %li
                 = link_to 'Login', new_user_session_path
 
+    - if current_user.present?
+      .user-nav
+        %ul
+          %li
+            = link_to 'Dashboard', :dashboard
+          %li
+            = link_to 'Leads', :leads
+          %li
+            = link_to 'Tasks', :tasks
+          %li
+            = link_to 'Contacts', :contacts
+          %li
+            = link_to 'Accounts', :accounts
+          %li
+            = link_to 'Opportunities', :opportunities
+
     - if flash.present?
       %section
         - flash.each do |name, msg|
           %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
             %a.close{"data-dismiss" => "alert"} &#215;
-            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
-    .container
-      - if current_user.present?
-        .row
-          .span8.offset3
-            .user-nav
-              %ul
-                %li
-                  = link_to 'Dashboard', :dashboard
-                %li
-                  = link_to 'Leads', :leads
-                %li
-                  = link_to 'Tasks', :tasks
-                %li
-                  = link_to 'Contacts', :contacts
-                %li
-                  = link_to 'Accounts', :accounts
-                %li
-                  = link_to 'Opportunities', :opportunities
-          .row
-            .span2.well
-              %h4
-                Quick Links
-              %hr
-              %ul.sidebar
-                %li
-                  = link_to 'New Lead', new_lead_path
-                %li
-                  = link_to 'New Task', new_task_path
-                %li
-                  = link_to 'New Contact', new_contact_path
-                %li
-                  = link_to 'New Account', new_account_path
-                %li
-                  = link_to 'New Opportunity', new_opportunity_path
-              %br
-              %br
-              %h4
-                Settings
-              %hr
-              %ul.sidebar
-                %li
-                  = link_to 'Web-to-Lead Form', web_to_lead_path
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 
-            .span8
-              = yield
-      - if current_user.present? == false
+    .container
+      %br/
+      .row
+        .span2.well
+          %h4
+            Quick Links
+          %hr
+          %ul.sidebar
+            %li
+              = link_to 'New Lead', new_lead_path
+            %li
+              = link_to 'New Task', new_task_path
+            %li
+              = link_to 'New Contact', new_contact_path
+            %li
+              = link_to 'New Account', new_account_path
+            %li
+              = link_to 'New Opportunity', new_opportunity_path
+          %br
+          %br
+          %h4
+            Settings
+          %hr
+          %ul.sidebar
+            %li
+              = link_to 'Web-to-Lead Form', web_to_lead_path
+
         .span8
           = yield
+        - if current_user.present? == false
+          .span8
+            = yield
     .row#push
     .footer
       Rebel Outpost, LLC © 2012 &nbsp&nbsp&nbsp|&nbsp&nbsp&nbsp Tel: (480) 251-5162 &nbsp&nbsp&nbsp |&nbsp&nbsp&nbsp Glendale, AZ

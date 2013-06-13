@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  
+
   def new
     @organization = Organization.find params[:organization_id]
     @user = User.new

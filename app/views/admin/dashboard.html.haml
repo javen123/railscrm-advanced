@@ -53,7 +53,7 @@
         %th
           Organization
 
-    %tbody 
+    %tbody
       - User.all.where(admin: false).each do |user|
         %tr
           %td
@@ -61,7 +61,6 @@
           %td
             = user.phone
           %td
-            = user.organization.name
+            = user.organization.name unless user.organization == nil
 
 
-          

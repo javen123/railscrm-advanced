@@ -1,9 +1,7 @@
 RebelFoundation::Application.routes.draw do
-
   devise_for :users
-
   devise_scope :user do
-    match "logout" => "devise/sessions#destroy", as: "logout"  
+    match "logout" => "devise/sessions#destroy", as: "logout"
     match "login" => "devise/sessions#new", as: "login"
     match "dashboard" => "users#dashboard", as: "dashboard"
     match "admin"=> "admin#dashboard", as: "admin"
@@ -12,7 +10,7 @@ RebelFoundation::Application.routes.draw do
   match "web_to_lead" => "leads#new_web_lead", :as => "web_to_lead"
   match "create_lead" => "leads#create_web_lead", :as => "create_lead"
   match "generate" => "leads#external_form"
-  
+
   resources :leads do
     resources :notes
   end
@@ -24,7 +22,7 @@ RebelFoundation::Application.routes.draw do
   end
 
   match 'admin' => 'admin#dashboard', as: 'admin'
-  
+
   namespace :admin do
     resources :users
     resources :organizations
@@ -34,6 +32,6 @@ RebelFoundation::Application.routes.draw do
   resources :contacts
   resources :accounts
   resources :opportunities
-  
+
   root to: 'pages#index'
 end

@@ -1,7 +1,6 @@
 .form.well
-  .label
-    %h2
-      Convert Lead
+  %h2
+    Convert Lead
   %br
   .form-horizontal
     = simple_form_for @lead, :html => { :class => 'form-horizontal' }  do |f|
@@ -20,4 +19,4 @@
             = f.input :opportunity_owner, collection:(@opportunity_owner)
 
       .row.pull-right
-        = f.submit 'Convert', class: 'btn btn-primary'  
+        = f.submit 'Convert', class: 'btn btn-primary'
