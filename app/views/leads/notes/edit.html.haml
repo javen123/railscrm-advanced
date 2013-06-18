@@ -1,0 +1,5 @@
+= simple_form_for @note do |n|
+  = n.input :content, as: :text, input_html: {rows: 5, class: "field span7"}
+  = n.input :note_type, collection:[['Call Back', 'call'],['Email', 'email'], ['Follow Up', 'follow_up']]
+  = n.input :due_date, as: :string, input_html: { :class => 'jquery-ui-date'}
+  = n.submit 'Update Note', class: 'btn btn-primary'

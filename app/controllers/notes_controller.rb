@@ -18,10 +18,9 @@ class NotesController < PublicController
   end
 
   def edit
-    binding.pry
     @lead = Lead.find(params[:lead_id])
     @note = Note.find(params[:id])
-    redirect_to @lead
+    redirect_to :back
   end
 
   def destroy

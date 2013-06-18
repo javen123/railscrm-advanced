@@ -1,6 +1,6 @@
 class LeadsController < PublicController
   before_filter :authenticate_user!, :except => ['external_form']
-  
+
   def new
     @lead           = current_user.organization.leads.new
     @lead_owner     = current_user.organization.users.map(&:email)
@@ -8,7 +8,7 @@ class LeadsController < PublicController
     @lead_sources   = Lead.sources
     @lead_interests = Lead.interests
   end
-  
+
   def create
     @lead = current_user.organization.leads.new params[:lead]
     @lead.update_attributes(assigned_to: @lead.lead_owner)
@@ -20,11 +20,11 @@ class LeadsController < PublicController
       render :new
     end
   end
-  
+
   def index
     @leads = current_user.organization.leads
   end
-  
+
   def show
     @lead           = current_user.organization.leads.find params[:id]
     @lead_owner     = current_user.organization.users.map(&:email)
@@ -32,15 +32,15 @@ class LeadsController < PublicController
     @lead_sources   = Lead.sources
     @lead_interests = Lead.interests
   end
-  
+
   def edit
   end
-  
+
   def update
     @lead = current_user.organization.leads.find params[:id]
     if params[:commit] == 'Convert'
       convert_lead
-    else  
+    else
       if @lead.update_attributes params[:lead]
         LeadMailer.notify_updated_lead(@lead.lead_owner, @lead).deliver
         redirect_to lead_path @lead, flash[:notice] = 'Lead Updated'
@@ -49,10 +49,10 @@ class LeadsController < PublicController
       end
     end
   end
-  
+
   def destroy
     @lead = Lead.find params[:id]
-    
+
     if @lead.destroy
       flash[:notice] = 'Lead Deleted'
       redirect_to :back
@@ -136,4 +136,4 @@ class LeadsController < PublicController
     def decrypt(encrypted_data)
       return data = KEY.dec(encrypted_data)
     end
-end  
+end
