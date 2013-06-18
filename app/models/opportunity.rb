@@ -22,15 +22,15 @@ class Opportunity
   STAGES = [['Prospecting', 'prospecting'], ['Proposal', 'proposal'], ['Analysis', 'analysis'], ['Presentation', 'presentation'], ['Negotiation', 'negotiation'], ['Final Review', 'final_review'], ['Closed/Won','closed_won'], ['Closed/Lost', 'closed_lost']]
 
   class << self
-    
+
     def types
       TYPES
     end
-    
+
     def stages
       STAGES
     end
-    
+
   end
 
 end

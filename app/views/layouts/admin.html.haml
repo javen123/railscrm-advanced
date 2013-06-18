@@ -23,23 +23,19 @@
               %li
                 = link_to 'Login', new_user_session_path
 
+    - if current_user.admin?
+      .user-nav
+        %ul
+          %li
+            = link_to 'Admin', :admin
 
     - if flash.present?
       %section
         - flash.each do |name, msg|
           %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
             %a.close{"data-dismiss" => "alert"} &#215;
-            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) 
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+
     .container
-      - if current_user.admin?
-        .row
-          .span8.offset3
-            .user-nav
-              %ul
-                %li
-                  = link_to 'Admin', :admin
-            /     %li
-            /       = link_to 'Leads', :leads
-                
-            .span8
-              = yield
+      .span8.offset1
+        = yield

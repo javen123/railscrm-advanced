@@ -51,7 +51,7 @@
       - if current_user.present?
         %br
         .row
-          .span2.well
+          .span2
             %h4
               Quick Links
             %hr
@@ -75,11 +75,11 @@
               %li
                 = link_to 'Web-to-Lead Form', web_to_lead_path
 
-          .span8
+          .span8.offset05
             = yield
 
       - if current_user.present? == false
-        .span8
+        .span8.offset05
           = yield
 
     .row#push

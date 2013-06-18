@@ -3,12 +3,12 @@
     .legend
     = simple_form_for @account, :html => { :class => 'form-horizontal' }  do |f|
       .row
-        .span4
+        .span4.left
           = f.input :name
           = f.input :email
           = f.input :assigned_to, collection:(@lead_owner)
           = f.input :website
-        .span4
+        .span4.right
           = f.input :phone
           = f.input :address
       .row.pull-right

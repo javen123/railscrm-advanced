@@ -1,7 +1,7 @@
 .form-horizontal
   = simple_form_for [:admin, @user], :html => { :class => 'form-horizontal' }  do |f|
     %fieldset
-      %legend 
+      %legend
         User Info
         .row
           .span4
@@ -10,6 +10,6 @@
             = f.input :last_name
             = f.input :email, as: :email
             = f.input :organization_role,      collection:[['Admin', 'admin'],['User', 'user']]
-          .row.pull-right 
+          .row.pull-right
             = f.submit class: 'btn btn-primary'
             = link_to 'Cancel', admin_organization_path(@organization), class: "btn btn-danger"

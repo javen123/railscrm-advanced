@@ -1,4 +1,4 @@
-.form.well
+.form
   %h2
     View Lead
   %br
@@ -8,22 +8,52 @@
 
   %fieldset
     %legend Lead Activities
-    %h3
-      Recent Activity for #{@lead.full_name}
-      .pull-right
-        %a{"data-target" => ".new-note", "data-toggle" => "collapse", class: 'btn btn-primary', id: 'new-note'}
-          New Note
-    .row.new-note.collapse
-      .span9.offset2
-        = simple_form_for [@lead, Note.new] do |n|
-          = n.input :content, as: :text, input_html: {rows: 5, class: "field span9"}
-          .span12.offset7
-            = n.submit class: 'btn btn-primary'
-    %br
-    - if @lead.notes.present?
-      - @lead.notes.each do |note|
-        .well-white.span10
-          = note.content
+    %h3 Recent Activity for #{@lead.full_name}:
+    %p
+      %table.table.table-striped
+        %thead
+          %tr
+            %th
+              Note
+            %th
+              Type
+            %th
+              Due Date
+            %th
+              Actions
+        %tbody
+          - if @lead.notes
+            - @lead.notes.each do |note|
+              %tr
+                %td
+                  = note.content
+                %td
+                  = note.note_type
+                %td
+                  = note.due_date
+                %td
+                  = link_to '', edit_lead_note_path(@lead, note), class: 'icon-edit', id: 'edit'
+                  = link_to '', lead_note_path(@lead, note), method: 'delete', class: 'icon-trash', data: { confirm: 'Are you sure that you want to delete this note?'}, id: 'delete'
+
+    %p
+    - binding.pry
+    - if @note
+      = simple_form_for @note do |n|
+        = n.input :content, as: :text, input_html: {rows: 5, class: "field span7"}
+        = n.input :note_type, collection:[['Call Back', 'call'],['Email', 'email'], ['Follow Up', 'follow_up']]
+        = n.input :due_date, as: :string, input_html: { :class => 'jquery-ui-date'}
+        = n.submit 'Update Note', class: 'btn btn-primary'
+
+    %hr/
+    %h3 Create a new note:
+    %p
+      = simple_form_for [@lead, Note.new] do |n|
+        = n.input :content, as: :text, input_html: {rows: 5, class: "field span7"}
+        = n.input :note_type, collection:[['Call Back', 'call'],['Email', 'email'], ['Follow Up', 'follow_up']]
+        = n.input :due_date, as: :string, input_html: { :class => 'jquery-ui-date'}
+        = n.submit 'Add new Note', class: 'btn btn-primary'
+
+
 
 
 
